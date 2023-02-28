@@ -1,0 +1,16 @@
+grep - print lines that match patterns
+-i (case-insensitive search),
+-l (list only the names of matching files), 
+-w (which matches whole words only)
+-v (invert; this lists only the lines that do not match the pattern).
+-E - exteded regular expressions
+
+[:upper:]	[A-Z]	uppercase letters
+[:lower:]	[a-z]	lowercase letters
+[:alpha:]	[[:upper:][:lower:]]	upper- and lowercase letters
+. - anything
+* - 0 or more
++ - 1 or more
+? - 0 or 1
+^ - begging
+$ - end

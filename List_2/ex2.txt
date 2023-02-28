@@ -1,0 +1,61 @@
+a) ll: ls -lAFbhv --color=always | less -XER
+    ls:
+    -A (--almost-all) - do not list implied . and ..
+
+    -b - print C-style escapes for nongraphic characters
+        $ touch $'\n\t\b\a\b'
+        $ ls -b
+        \n\t\b\a\b
+        $ echo *
+    
+    -F - append indicator (one of */=>@|) to entriesq
+        @ means symbolic link (or that the file has extended attributes).
+        * means executable.
+        = means socket
+        | means named pipe
+        > means door.
+        / means directory.
+
+    -h (--human-readable) - with -l and -s, print sizes like 1K 234M 2G etc.
+
+    -l - use a long listing format
+
+    -v -  natural sort of (version) numbers within text
+        bla-1.ime
+        bla-1.0.ime
+        bla-1.0.0.ime
+        bla-1.1.ime
+        bla-1.1.29.ime
+        bla-1.2.3.ime
+        bla-1.2.29.ime
+        bla-1.2.30.ime
+
+
+    --color[=WHEN] - colorize the output; WHEN can be 'always' (default if omitted), 'auto', or 'never'; more info below
+    
+    less:
+    -E - ends on EOF
+    -X - Disables sending the termcap initialization and
+        deinitialization strings to the terminal. This is
+        sometimes desirable if the deinitialization string does
+        something unnecessary, like clearing the screen.
+    -R -  (enhances colours)
+
+b) gentmp - echo "tmp-`date +"%Y%m%d%H%S"`"
+
+c) genpwd - cat /dev/urandom | tr -dc "3-9A-HJ-NP-Z" | fold -w 32 | head -n 1
+
+    tr - translate or delete characters
+        -c (--complement) -  use the complement of SET1
+
+        -d, --delete - delete characters in SET1, do not translate
+
+    fold - wrap each input line to fit in specified width
+
+        -w, --width=WIDTH use WIDTH columns instead of 80
+    
+    head - output the first part of files
+        -n, --lines=[-]NUM
+        print the first NUM lines instead of the first 10; with the leading '-', print all but the last NUM lines  of each file
+
+    

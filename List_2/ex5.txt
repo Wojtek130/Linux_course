@@ -1,0 +1,9 @@
+rename [PERLEXPRESSION] [PERLEXPRESSION]- rename files
+
+rename -n 's/\d+/sprintf "%03d", $&/e' *.png - sanity check (doesn't change anything)
+rename 's/\d+/sprintf "%03d", $&/e' *.png - sanity check (with effect)
+
+    -v - verbose
+    -f (force) - if  a renaming operation matches a filename that already exists, such a renaming won't go through by default. You can override this behavior by using the -f option.
+    -d - Rename only filename component (directory name doesn't change)
+

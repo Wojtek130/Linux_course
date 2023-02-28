@@ -1,0 +1,9 @@
+find /usr/share/locale/ -regextype egrep -regex '.*.mo' | cut -d/ -f5 | sort | uniq
+
+    cut - remove sections from each line of files
+        -d/ - set delimiter to /
+        -f5 - select only the 5. field (language)
+
+find /usr/share/locale/ -regextype egrep -regex '.*dpkg.mo' | cut -d/ -f5 | sort | uniq 
+
+find /usr/share/locale/pl/LC_MESSAGES | cut -d/ -f7 | sort | uniq

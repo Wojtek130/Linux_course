@@ -1,0 +1,9 @@
+find - recursive search for files in a directory hierarchy
+
+    -name '*jpg' - match pattern
+    -iname '*jpg' - match pattern case insensitive
+    -o, e.g. ( -iname 'jpeg' -o -iname 'jpg' ) - or
+    -type f - type files(s), directories(d)
+    -mtime -7 - time of modification (days)
+    -size +1G - size of a file
+    -owner bcotton - file owned by

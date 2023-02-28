@@ -1,0 +1,17 @@
+mlocate's main feature, from which it gets its name ("merging locate"): It provides a version of updatedb that reuses its old index to improve update performance by only querying lists of files/subdirectories for directories where the ctime has changed
+
+mlocate - show paths of files that match the pattern
+
+    - i - case insensitive
+    - c - count files
+    - b - pattern must be at the end
+    - l NUMBER - limit number of results to NUMBER
+
+updatedb creates or updates a database used by locate(1). If the database already exists, its data is reused to avoid rereading directories that have not changed.
+updatedb is usually run daily by cron(8) to update the default database.
+
+sudo updatedb
+
+Kpathsea is a library for path searching (e.g., for very quickly locating a given .sty file in a set of potentially large TEXMF trees, without doing a recursive directory tree traversal every time a given file is needed; this is important when compiling LaTeX documents using several packages, themselves requiring other packages, possibly various font files, etc.).
+
+ kpsewhich is more sophisticated than a typical which builtin, though, as it can return different results depending on what was given as -progname, has a notion of variables that can be set in texmf.cnf, can look up in-cache-only or on-disk depending on the per-directory-settings in texmf.cnf, etc.

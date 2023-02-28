@@ -1,0 +1,29 @@
+sed -  stands for stream editor and it can perform lots of functions on file like searching, find and replace, insertion or deletion.
+
+sed 's/previousWord/newWord/' file.txt -  replaces the word "previousWord" with "newWord" in the file. (replaces the first occurrence of the pattern in each line and it won’t replace the second, third…occurrence in the line)
+sed 's/previousWord/newWord/2' file.txt -  replaces the second occurence of the word "previousWord" with "newWord" in the file.
+sed 's/previousWord/newWord/g' file.txt -  globally replaces the word "previousWord" with "newWord" in the file. (all occurrences of the pattern)
+sed 's/previousWord/newWord/3g' file.txt -  globally replaces the word "previousWord" with "newWord" in the file from nth occurence (all occurrences of the pattern from nth occurence)
+echo "Hello World" | sed 's/\(\b[A-Z]\)/\(\1\)/g' - Parenthesize first character of each word
+sed '3 s/previousWord/newWord/' file.txt -  replaces the word "previousWord" with "newWord" in the whole given line
+sed '1,3 s/previousWord/newWord/' file.txt -  Replacing string on a range of lines
+sed 's/previousWord/newWord/p' file.txt -  Duplicating the replaced line with /p flag 
+sed -n 's/previousWord/newWord/p' file.txt -  Printing only the replaced lines 
+sed '5d' filename.txt - delete the 5. line of the file
+
+sed '3,6d' filename.txt - delete lines from a given range
+sed '/pattern/d' filename.txt - delete pattern-machetching line
+
+sed G a.txt - Insert one blank line after each line
+sed 'G;G' a.txt - To insert two blank lines 
+sed '/^$/d;G' a.txt - Delete blank lines and insert one blank line after each line
+sed '/love/{x;p;x;}' a.txt - Insert a black line above every line which matches “love”
+sed '/love/G' a.txt - Insert a blank line below every line which matches “love”
+sed 's/^/     /' a.txt - Insert 5 spaces to the left of every lines
+sed =  a.txt - Number each line of a file 
+
+sed -n '2,5p' a.txt - Viewing a file from x to y range
+sed '2,4d' a.txt - View the entire file except the given range
+sed -n '4'p a.txt - Print nth line of the file 
+
+
