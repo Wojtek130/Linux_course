@@ -1,1 +1,5 @@
 ex2 - add to bashrc alliases
+deklaruję:
+2 3 4 5 8 9 10
+
+czyli 7/11
