@@ -1,0 +1,3 @@
+https://www.linkedin.com/pulse/who-moved-my-path-exploiting-linux-using-variable-saurabh-sule/
+
+https://www.hackingarticles.in/linux-privilege-escalation-using-path-variable/
