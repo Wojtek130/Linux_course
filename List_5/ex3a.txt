@@ -1,0 +1,6 @@
+hostname - show or set the system's host name
+
+/etc/debian_version - wersja debiana
+
+uname - kernel name
+uname -a - all system info
