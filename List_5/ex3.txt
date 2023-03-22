@@ -1,0 +1,14 @@
+/etc/machine-id - file contains the unique machine ID of the local system that is set during installation or boot. 
+
+/etc/os-release <- tu znajdziemy distro i install
+
+uuid - A Version 1 UUID is a universally unique identifier that is generated using a timestamp and the MAC address of the computer on which it was generated.
+
+uuidgen - The uuidgen program creates (and prints) a new universally unique identifier (UUID) using the libuuid(3) library
+
+dbus-uuidgen - Utility to generate UUIDs
+
+uname -a - print all system information
+
+lsb_release - print distribution-specific information
+The Linux Standard Base (LSB) was a joint project by several Linux distributions under the organizational structure of the Linux Foundation to standardize the software system structure, including the Filesystem Hierarchy Standard used in the Linux kernel.

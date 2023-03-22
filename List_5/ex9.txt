@@ -1,0 +1,5 @@
+This snippet runs a new interactive instance of bash (bash -i), on a TCP connection to the specified port on the specified host which is created for the duration of the bash process. Standard output and standard error are sent through this connection (>& /dev/tcp/HOST/PORT), and standard input is read through this connection (0>&1 — this should be 0<&1 but 0>&1 works too).
+
+There is no port forwarding going on. Obviously, a TCP server of some kind has to be listening and accepting connections on that HOST:PORT, and the firewall has to let the connection through.
+
+echo "Hello World" > /dev/tcp/127.0.0.1/1234

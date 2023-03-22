@@ -1,0 +1,21 @@
+strace pozwala na podgląd i analizę wywołań poleceń systemowych wydawanych przez wskazany proces, przy czym możemy strace'm proces taki uruchomić, bądź podłączyć się do już działająceg
+
+strace -e trace=close pwd - jedno polecenie systemowe
+
+strace -e trace=open,close pwd - kila poleceń systemowych
+
+strace -o straceOut.txt pwd - zapis logów do pliku
+
+sudo strace -p 18739 - Podłączanie się do istniejącego procesu
+
+strace -f pwd - Śledzenie procesów potomnych
+
+strace -fe trace=execve pwd - Sprawdzanie jakie inne programy otwiera proces
+
+strace -t [polecenie] - Dołączenie timestamp do logów wywołań
+
+strace -ttt [polecenie] - Dołączenie timestampu w czasie unixowym do logów wywołań
+
+strace -T [polecenie] - Dołączenie czasu trwania wywołań systemowych
+
+strace -c [polecenie] - Raport z czasu spędzonego na poszczególnych wywołaniach systemowych

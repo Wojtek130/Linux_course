@@ -52,6 +52,8 @@ stat - display file or file system status (stat ./myfile.txt)
     Birth: The time at which the file was created.
 
 realpath file.txt - return the canonicalised absolute pathname
+readlink -f file.txt - Print value of a symbolic link or canonical file name
+readlink -e: This option will canonicalize by following every symlink in every component of the given name recursively, all components must exist.
 
 dirname file.txt - polecenie systemu Unix, służące do wyświetlania ścieżki bez ostatniego składnika. Działa odwrotnie do polecenia basename.
 basename file.txt - only file name

@@ -1,0 +1,9 @@
+lsof - list open files
+lsof -p [PID] - files opened by a processes
+lsof -u [user] - files opened by a user
+lsof file - check who opened the file
+
+fuser PID - identify processes using files or sockets
+
+fuser -k [PID] - kill process
+fuser -k [PID] == kill -TERM $(lsof -t [path])
