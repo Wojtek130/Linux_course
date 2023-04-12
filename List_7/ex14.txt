@@ -1,0 +1,70 @@
+uptime - czas nieprzerwanej pracy komputera 
+1 linia jak w
+Jedną z ciekawszych kolumn w wyjściu top jest kolumna ze zliczoną ilością procesów zombie. W dużym uproszczeniu są to procesy, które skończyły swoje wykonanie i czekają na wait() od rodzica. Widzimy je jednak rzadko, gdyż programy mające dzieci z reguły mają dobrze napisaną obsługę końca pracy dziecka. Natomiast w przypadku sierot (procesów, które straciły swojego rodzica)
+
+Następna linia zawiera stany CPU (wartość procentową na poszczególny stan), które mogą być następujące:
+
+ us(er): czas wykonywania procesów użytkownika z zerową wartością nice (większość procesów);
+sy(stem): czas wykonywania procesów jądra;
+ ni(ce): czas wykonywania procesów z wartością nice>0;
+ id(le): czas wykonywania procesów idle (bezczynności);
+ wa(it for IO): czas oczekiwania na operację I/O;
+ hi[Hardware Interrups]: czas spędzony na obsłudze przerwań sprzętowych;
+ si[Software Interrups]: czas spędzony na obsłudze przerwań programowych;
+ st(olen): czas ukradziony przez hypervisora (dla maszyn wirtualnych).
+
+  PID – ID Procesu (Process ID).
+ User – User, do którego proces przynależy.
+ PR – Priorytet. Istnieją dwa typy priorytetów: Normalne (liczba) i RT (Real Time – wykonywane w czasie rzeczywistym – rzadko spotykane).
+ NI – Wartość Nice. Zauważmy, że w większości przypadków priorytet = 20 + NI.
+ VIRT – Virtual Image Size, czyli wielkość wirtualnego obrazu procesu. Jest to suma pamięci zmapowanej przez proces (np. pamięci karty graficznej), pamięci używanej przez proces, plików zmapowanych przez proces oraz pamięci współdzielonej z innymi procesami. W wielu przypadkach VIRT jest wartością wręcz wprowadzającą w błąd.
+ RES – Resident Memory – nieswappowalna pamięć, której proces używa (pamięć fizyczna).
+ SHR – Shared Memory – pamięć, która jest/może być współdzielona przez proces.
+ S – Stan procesu (Running, Sleeping, Zombie, etc...).
+ %CPU – Użycie CPU w procentach. W środowiskach wieloprocesorowych (mówiąc o procesorze jako rdzeniu procesora, niekoniecznie o wielu układach) może być wartością większą niż 100%. Np. wysycenie dwóch procesorów (rdzeni lub wątków procesora, w zależności od typu procesora, architektury itp.) da nam wynik 200%.
+ %MEM – Procentowy udział w dostępnej pamięci fizycznej.
+ TIME+ – Całkowity czas, który procesor zużył na zadanie, odkąd to wystartowało.+ oznacza większą dokładność. W naszym przypadku setne części sekundy.
+ COMMAND – Komenda.
+
+sudo ln -s /usr/bin/top /usr/bin/my_top
+
+Pierwszą rzeczą, jaką praktycznie zawsze należy ustawić, jest skalowanie pamięci. W przeciwieństwie do htop, top nie posiada inteligentnego skalowania. Jest ono ustawione na sztywną wartość (jednostkę). Co gorsze, domyślnie są to KiB (kilobajty, w teorii poprawnie nazywane kikibajtami [użycie 2^10 zamiast 10^3, jednak słownictwo to się nie przyjęło i tylko twórcy nośników pamięci oraz firma Apple używają „przekłamanej” nomenklatury]). Przy pomocy klawisza E możemy skalować pamięć aż do exbibajtów (częściej nazywanych eksabajtami [co ciekawe, zgodnie z polską Wikipedią, w tym przypadku zamieniamy ks na x]). W przypadku dobrnięcia do kresu skalowania „zapętlamy” się i dostajemy wartość początkową. W celu wyskalowania pamięci dla obszaru zadań używamy z kolei małego e. Tutaj jednak maksymalne skalowanie kończy się na petabajtach.
+
+Kolejną zmienną, którą lubię mieć w swoim topie, jest zmiana kolumn. Po pierwsze kolumna VIRT musi odejść! Po drugie według uznania można dodać kolumnę. W moim wypadku pozwolę sobie na dodanie nTH mówiącej o liczbie wątków w danym procesie. By wejść w tryb edycji pół (field), użyjemy klawisza f.
+
+W tym trybie nawigujemy przy pomocy strzałek w górę i w dół. Spacją możemy włączać/wyłączać pola. Jeśli chcemy zmienić kolejność pól, wciskamy prawą strzałkę (wchodzimy w tryb przenoszenia pola). Następnie przy pomocy strzałek góra, dół przenosimy pole na wybrane miejsce. By wyjść z trybu przenoszenia pola i potwierdzić jego nową pozycję, należy użyć klawisza enter. Ja zmieniłem kolejność pól %MEM oraz ustawiłem nTH w odpowiednim, moim zdaniem, miejscu.
+
+W trybie edycji pól istnieje też istotna funkcjonalność, jaką jest ustawienie pola, po którym top będzie sortował procesy. Służy do tego klawisz s. Jest to najłatwiejszy sposób na ustawienie pola sortowania.
+
+By wejść do trybu mapowania kolorów, używamy klawisza Z. Niemniej przed tą operacją należy włączyć tryb kolorów przy pomocy przełącznika z.
+
+Na początku przy pomocy (S, M, H, T) wybieramy sekcje, a następnie jednym z numerów (0-7) wybieramy kolor. W tym wypadku także mamy możliwość zmiany okna, którego kolory edytujemy (służy do tego w lub a).
+
+By wyjść i zapisać zmiany należy wcisnąć klawisz enter.
+
+Sortowanie i filtry
+P – sortuje procesy po użyciu procesora.
+M – sortuje procesy po użyciu pamięci.
+n – sortuje po numerze PID.
+< i > – zmienia pole, po którym odbywa się sortowanie.
+u – filtruje po nazwie użytkownika, niestety należy wpisać jego pełną nazwę.
+R – odwraca kolejność sortowania.
+
+Użyteczne
+k – służy do wysłania SIGKILL.
+r – służy do zmiany wartości parametru nice.
+
+Tryb „alternatywny”*
+A – służy do wejścia/wyjścia w/z tryb/u alternatywny/ego.
+w lub a – zmienia okno w trybie alternatywnym.
+
+Zmiana podsumowań
+1,2,3 – zmienia tryb podsumowania procesora. Tryby te mogą mieć „podtryby”. W tym wypadku należy ponownie wywołać klawisz.
+t – zmienia tryb wyświetlania podsumowania procesora.
+m – zmienia tryb podsumowania pamięci.
+l – włącza/wyświetla baner podsumowania (pierwszą linijkę).
+H – zmienia tryb zadania (procesy) na wątki (threads).
+
+Inne
+c – włącza/wyłącza wyświetlanie całych ścieżek komend.
+G – wybór jednej z 4 grup (1:Def,2:Mem,3:Job,4:Usr) w danym oknie. W trybie alternatywnym mamy 4 okna, które posiadają kolejno wymienione grupy. Tutaj należy zwrócić uwagę, iż top nie jest konsekwentny w nazewnictwie. Raz mówimy o grupach, raz o oknach. W trybie pracy normalnej wybieramy grupę pól, które się wyświetlają. W trybie alternatywnym polecenie ustawia grupę pól, które będą w danym oknie.

@@ -1,0 +1,77 @@
+       run-parts  uruchamia  wszystkie  programy  wykonywalne  znalezione  w  katalogu   KATALOG.
+       Pozostałe pliki są po cichu ignorowane.
+
+       Jeżeli  nie podano opcji --lsbsysinit ani opcji --regex, to nazwy plików muszą składać się
+       w tylko i wyłącznie z dużych  i  małych  liter  ASCII,  cyfr  ASCII,  podkreśleń  ASCII  i
+       myślników ASCII.
+
+       Jeżeli  podano  opcję  --lsbsysinit,  to  nazwy  plików nie mogą kończyć się na .dpkg-old,
+       .dpkg-dist, .dpkg-new lub .dpkg-tmp i muszą należeć do jednej lub  kilku  z  następujących
+       przestrzeni nazw: przestrzeń nazw przydzielona przez LANANA (^[a-z0-9]+$); hierarchiczna i
+       zarezerwowana przestrzeń  nazw  LSB  (^_?([a-z0-9_.]+-)+[a-z0-9]+$)  lub  przestrzeń  nazw
+       skryptów crona Debiana (^[a-zA-Z0-9_-]+$).
+
+       Jeśli  podano  opcję  --regex,  nazwy muszą pasować do rozszerzonego wyrażenia regularnego
+       podanego jako wartość tej opcji.
+
+       Znalezione pliki są uruchamiane w alfabetycznej kolejności ich nazw (zgodnie z  porządkiem
+       sortowania  ustawień  regionalnych  C/POSIX),  chyba  że  w  linii  poleceń  podano  opcję
+       --reverse, która powoduje, że skrypty będą uruchamiane w odwrotnej kolejności.
+
+       --test wypisuje nazwy skryptów,  które  zostałyby  uruchomione,  ale  faktycznie  ich  nie
+              uruchamia.
+
+       --list wypisuje  nazwy wszystkich plików (nie tylko wykonywalnych), ale faktycznie ich nie
+              uruchamia. Ta opcja nie może być użyta z --test.
+
+       --verbose
+              przed uruchomieniem każdego ze skryptów wypisuje jego nazwę na standardowe  wyjście
+              błędów.
+
+       --report
+              podobne  do  --verbose,  ale  wypisuje  nazwy  tylko  tych skryptów, które generują
+              wyjście.  Nazwa skryptu jest wypisywana na stdout lub stderr, w zależności od tego,
+              gdzie skrypt wysyła swoje pierwsze wyniki.
+
+       --reverse
+              odwraca porządek wykonywania skryptów.
+
+       --exit-on-error
+              kończy pracę, gdy tylko któryś ze skryptów zakończy się niezerowym kodem wyjścia.
+
+       --lsbsysinit
+              używa konwencji nazw LSB, zamiast zwykłej.
+
+       --new-session
+              wykonuje  każdy  skrypt  w  osobnej  sesji  procesów.  Po  użyciu tej opcji zabicie
+              programu run-parts nie zabije obecnie wykonywanego skryptu, który  będzie  działał,
+              aż się zakończy.
+
+       --regex=RE
+              sprawdza  nazwy  plików  względem  rozszerzonego wyrażenia regularnego RE. Przykład
+              można znaleźć w rozdziale PRZYKŁADY.
+
+       -u, --umask=umask
+              przed uruchomieniem skryptów nadaje umask wartość umask. Powinna ona zostać  podana
+              ósemkowo. Domyślnie umask otrzymuje wartość 022.
+
+       -a, --arg=argument
+              przekazuje  argument do skryptów. Należy użyć osobnego --arg dla każdego argumentu,
+              który chce się przekazać.
+
+       --     oznacza koniec  opcji.  Jakakolwiek  nazwa  pliku  występująca  po  --  nie  będzie
+              interpretowana jako opcja, nawet jeśli zaczyna się od myślnika.
+
+       -h, --help
+              wyświetla informację o sposobie wywołania i kończy pracę.
+
+       -V, --version
+              wyświetla numer wersji, informację o prawach autorskich i kończy pracę.
+
+sudo run-parts --report --test /etc/cron.daily/
+
+czemu nie można było w z11:
+
+ Znalezione pliki są uruchamiane w alfabetycznej kolejności ich nazw (zgodnie z  porządkiem
+       sortowania  ustawień  regionalnych  C/POSIX),  chyba  że  w  linii  poleceń  podano  opcję
+       --reverse, która powoduje, że skrypty będą uruchamiane w odwrotnej kolejności.

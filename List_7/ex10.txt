@@ -1,0 +1,9 @@
+postrotate
+                invoke-rc.d rsyslog rotate > /dev/null
+endscript
+
+The purpose of the command is forcing rsyslog to reopen the files it's using to write logs. It's used after logrotate moves the old files, so rsyslog starts writing to the new ones.
+
+Example: rsyslog writes most of its stuff to /var/log/syslog. When logrotate kicks in, it moves this file to /var/log/syslog.1 and creates a new, empty /var/log/syslog. But as you probably know (but just in case), rsyslog is not writing to a file named /var/log/syslog, but to a file descriptor it got the first time it opened the file. You can move around the file associated and rsyslog would keep writing to it, because it only knows about the file descriptor. When you move /var/log/syslog to /var/log/syslog.1, rsyslog will keep writing to /var/log/syslog.1, because that's what its file descriptor points to. In fact, you could even delete the file and rsyslog would keep writing. That's what happens when files that are deleted seem to be occupying space: the file descriptors are still opened, and thus the space is not freed. This only happens when the last reference to the file is closed.
+
+The "rotate" argument is meant to force the release of old file descriptors, and to tell rsyslog that it must open the files again, so it gets new file descriptors to the new files and the old ones can be properly disposed of.

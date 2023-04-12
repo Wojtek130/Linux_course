@@ -1,0 +1,91 @@
+ps – polecenie występujące w Uniksie oraz systemach na nim wzorowanych, w tym Linuksie. Służy do wyświetlania listy procesów. (domyślnie dla danego usera)
+
+Najczęściej używane opcje
+-e - wyświetla wszystkie uruchomione procesy[1];
+-f - wyświetla szczegółowe informacje o uruchomionych procesach;
+-u - wyświetla uruchomione procesy danego użytkownika.[2].
+
+
+       pstree pokazuje uruchomione procesy w formie drzewa. Korzeń tego drzewa znajduje się  albo
+       w  pid albo w init, jeśli pid pominięto. Jeżeli podano nazwę użytkownika, to pokazywane są
+       wszystkie drzewa procesów zakorzenione w procesach tego użytkownika.
+
+       pstree wizualnie łączy identyczne gałęzie  umieszczając  je  w  nawiasach  kwadratowych  i
+       poprzedzając liczbą powtórzeń, na przykład:
+
+           init-+-getty
+                |-getty
+                |-getty
+                `-getty
+
+       staje się
+
+           init---4*[getty]
+
+       Wątki  potomne procesu są przypisane do procesu rodzica i są pokazywane jako nazwa procesu
+       w nawiasach klamrowych, na przykład:
+
+           icecast2---13*[{icecast2}]
+
+       Jeśli pstree zostanie wywołany jako pstree.x11, to  będzie  czekał  na  naciśnięcie  przez
+       użytkownika klawisza enter. Jest to użyteczne, kiedy pstree jest uruchomiony w xterminalu.
+
+       Niektóre  jądra  lub  parametry  montowania,  takie jak opcja hidepid systemu procfs, będą
+       ukrywały pewne informacje dla niektórych procesów. W  takich  sytuacjach  pstree  spróbuje
+       zbudować drzewo bez tych informacji i pokaże znaki zapytania zamiast nazw procesów.
+
+              -a     Pokazuje argumenty wiersza poleceń. Jeżeli wiersz poleceń procesu jest przeniesiony
+              na partycję wymiany (swapped out), to proces ten jest pokazywany  w  nawiasach.  -a
+              niejawnie wyłącza formę zwartą dla procesów, ale nie dla wątków.
+
+       -A     Używa znaków ASCII do rysowania drzewa.
+
+       -c     Wyłącza  formę  zwartą  identycznych  poddrzew.  Domyślnie,  jeśli jest to możliwe,
+              poddrzewa są łączone.
+
+       -G     Posługuje się znakami ramek VT100.
+
+       -h     Wyróżnia podświetleniem (highlighting) bieżący proces i jego przodków. Nie  działa,
+              jeśli  terminal  nie  obsługuje  wyróżnienia  albo  w  pokazywanym  poddrzewie  nie
+              występuje proces bieżący ani żaden z jego przodków.
+
+       -H     Podobne do -h, ale wyróżnia podany proces. Inaczej niż przy -h, pstree zawodzi, gdy
+              posłużono się -H, a wyróżnianie nie jest dostępne.
+
+       -g     Pokazuje identyfikatory grup procesów (PGID). Wyświetlane są jako liczby dziesiętne
+              w nawiasach po każdej nazwie procesu. -g  niejawnie  wyłącza  formę  zwartą.  Jeśli
+              wyświetlane są zarówno identyfikatory procesów, jak i identyfikatory grup procesów,
+              to najpierw są pokazywane identyfikatory procesów.
+
+       -l     Wyświetla długie wiersze. Domyślnie wiersze są obcinane albo do  wartości  zmiennej
+              środowiskowej  COLUMNS  albo  do  szerokości  ekranu.  Jeśli żadna z tych metod nie
+              zadziała, to używana jest wartość domyślna 132 kolumn.
+
+       -n     Sortuje procesy  o  tym  samym  przodku  w  kolejności  PID  zamiast  według  nazwy
+              (sortowanie numeryczne).
+
+       -N     Pokazuje  indywidualne  drzewa  dla każdej podanej przestrzeni nazw lub dla każdego
+              podanego typu.  Dostępne  typy  to:  ipc,  mnt,  net,  pid,  user,  uts.  Zwyczajni
+              użytkownicy  nie  mają  dostępu  do informacji o procesach innych użytkowników, tak
+              więc wyjście tej opcji będzie ograniczone.
+
+       -p     Pokazuje identyfikatory procesów (PID). Wyświetlane są  jako  liczby  dziesiętne  w
+              nawiasach po każdej nazwie procesu. -p niejawnie wyłącza formę zwartą.
+
+       -s     Pokazuje rodzica podanego procesu.
+
+       -S     Pokazuje  zamienianie  się  przestrzeni  nazw.  Podobnie  do  opcji -N wyjście jest
+              ograniczone, jeśli pstree jest uruchomiony przez zwykłego użytkownika.
+
+       -u     Pokazuje zamienianie się uid. W przypadku, gdy  identyfikator  użytkownika  procesu
+              różni  się  od  identyfikatora użytkownika jego rodzica, nowy uid pokazywany jest w
+              nawiasach po nazwie.
+
+       -U     Posługuje się znakami ramek UTF-8 (Unicode). Pod Linuksem 1.1-54  i  nowszym,  tryb
+              UTF-8  wprowadzany jest na konsoli przez echo -e ' 33%8' i opuszczany przez echo -e
+              ' 33%@'.
+
+       -V     Wyświetla informację o wersji.
+
+       -Z     (SELinux). Pokazuje kontekst bezpieczeństwa.  Opcja  ta  działa  tylko  wtedy,  gdy
+              pstree został skompilowany ze wsparciem dla SELinuksa.
