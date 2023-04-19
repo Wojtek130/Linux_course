@@ -1,0 +1,17 @@
+sysVinit -> Updsart -> systemd
+
+- Any change that  the Linux ecosystem makes, especially if it’s not backward compatible, impacts nearly everyone running a Linux machine.
+
+Some notable examples are:
+
+-systemd absorbing udev (system plików)
+-Introducing a change that kills background processes when a user logs out by default.
+-GNOME making systemd a hard-dependency and preventing any non-systemd systems from using it. (It’s possible to run GNOME without systemd by requires lots of workarounds.)
+
+The last, and perhaps largest, reason I see for complaints about systemd is that it is a significant change from its predecessors. Both in implementation and philosophy.
+
+The UNIX philosophy states that everything tool should do one thing and do it very well. While Poettering is quick to point out that systemd is a collection of binaries, many of the binaries depend on one another, not making it as decoupled and modular as advertised.
+
+systemd doesn’t abide by the POSIX standard
+
+https://betterprogramming.pub/why-most-linux-users-hate-systemd-c591eef3d034

@@ -1,0 +1,34 @@
+ps – polecenie występujące w Uniksie oraz systemach na nim wzorowanych, w tym Linuksie. Służy do wyświetlania listy procesów.
+
+Najczęściej używane opcje
+-e - wyświetla wszystkie uruchomione procesy[1];
+-f - wyświetla szczegółowe informacje o uruchomionych procesach;
+-u - wyświetla uruchomione procesy danego użytkownika.[2]. [default]
+
+       pstree pokazuje uruchomione procesy w formie drzewa. Korzeń tego drzewa znajduje się  albo
+       w  pid albo w init, jeśli pid pominięto. Jeżeli podano nazwę użytkownika, to pokazywane są
+       wszystkie drzewa procesów zakorzenione w procesach tego użytkownika.
+
+       pstree wizualnie łączy identyczne gałęzie  umieszczając  je  w  nawiasach  kwadratowych  i
+       poprzedzając liczbą powtórzeń, na przykład:
+
+           init-+-getty
+                |-getty
+                |-getty
+                `-getty
+
+       staje się
+
+           init---4*[getty]
+
+       Wątki  potomne procesu są przypisane do procesu rodzica i są pokazywane jako nazwa procesu
+       w nawiasach klamrowych, na przykład:
+
+           icecast2---13*[{icecast2}]
+
+       Jeśli pstree zostanie wywołany jako pstree.x11, to  będzie  czekał  na  naciśnięcie  przez
+       użytkownika klawisza enter. Jest to użyteczne, kiedy pstree jest uruchomiony w xterminalu.
+
+       Niektóre  jądra  lub  parametry  montowania,  takie jak opcja hidepid systemu procfs, będą
+       ukrywały pewne informacje dla niektórych procesów. W  takich  sytuacjach  pstree  spróbuje
+       zbudować drzewo bez tych informacji i pokaże znaki zapytania zamiast nazw procesów.
