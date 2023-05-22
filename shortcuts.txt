@@ -1,0 +1,20 @@
+1.	Przesuwanie kursora:
+•	Ctrl + A: Przejdź na początek aktualnie pisanej linii.
+•	Ctrl + E: Przejdź na koniec aktualnie pisanej linii.
+•	Ctrl + ←: Przesuń kursor w lewo o jedno słowo.
+•	Ctrl + →: Przesuń kursor w prawo o jedno słowo.
+•	Ctrl + U: Usuń tekst przed kursor.
+•	Ctrl + K: Usuń tekst za kursor.
+•	Ctrl + L: Wyczyść ekran terminala.
+2.	Historia poleceń:
+•	Ctrl + R: Wyszukaj w historii poleceń (wpisz część polecenia i naciśnij Ctrl + R aby przeszukiwać historię poleceń wstecz).
+•	Ctrl + P lub ↑: Przejdź do poprzedniego polecenia w historii.
+•	Ctrl + N lub ↓: Przejdź do następnego polecenia w historii.
+3.	Manipulacja tekstem:
+•	Ctrl + D: Zakończ bieżący proces wejścia/wyjścia lub zamknij terminal, jeśli jesteś na końcu linii.
+•	Ctrl + C: Przerwij aktualnie wykonywane polecenie.
+•	Ctrl + Z: Wstrzymaj aktualnie wykonywane polecenie (można wznowić za pomocą fg lub bg).
+•	Tab: Automatyczne uzupełnianie nazw plików i katalogów na podstawie wpisywanego tekstu.
+•	Ctrl + W: Usuń poprzednie słowo.
+4.	Mnożenie skrótów:
+•	Można łączyć niektóre skróty, np. Ctrl + A przeniesie kursor na początek linii, a następnie Ctrl + K usunie cały tekst za kursorem.

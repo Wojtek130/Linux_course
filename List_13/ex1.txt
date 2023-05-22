@@ -1,0 +1,29 @@
+Implementacja przestrzeni nazw (namespaces) w systemie Linux umożliwia izolację zasobów systemowych dla procesów. Dzięki temu różne procesy mogą korzystać z niezależnych instancji tych zasobów, co zapewnia separację i izolację środowisk. Poniżej przedstawiam opis implementacji poszczególnych przestrzeni nazw oparty na podanych podręcznikach systemowych i dokumentacji jądra Linux.
+
+1. Przestrzenie nazw PID (pid_namespaces):
+   Przestrzenie nazw PID izolują przestrzenie procesów, umożliwiając każdemu procesowi posiadanie własnej hierarchii identyfikatorów procesów (PID). Procesy w jednej przestrzeni nazw PID widzą tylko procesy należące do tej samej przestrzeni. Izolacja ta ma na celu zapewnienie separacji i niezależności hierarchii procesów dla różnych kontekstów.
+
+2. Przestrzenie nazw użytkowników (user_namespaces):
+   Przestrzenie nazw użytkowników umożliwiają izolację identyfikatorów użytkowników (UID) i grup użytkowników (GID). Każda przestrzeń nazw użytkownika ma swoje niezależne zestawy identyfikatorów użytkowników i grup. Dzięki temu procesy w różnych przestrzeniach nazw użytkownika mogą mieć różne zestawy uprawnień i dostępów do zasobów systemowych.
+
+3. Przestrzenie nazw montowania (mount_namespaces):
+   Przestrzenie nazw montowania izolują punkty montowania systemu plików. Każda przestrzeń nazw montowania ma swoje niezależne drzewo montowania, co oznacza, że procesy w różnych przestrzeniach nazw widzą różne punkty montowania i niezależnie zarządzają nimi. Izolacja ta umożliwia różnym procesom korzystanie z własnych, niezależnych punktów montowania.
+
+4. Przestrzenie nazw sieciowych (network_namespaces):
+   Przestrzenie nazw sieciowych izolują stos sieciowy, interfejsy sieciowe, tablice trasowania i inne aspekty sieciowe. Każda przestrzeń nazw sieciowych posiada swoje niezależne interfejsy sieciowe, adresy IP, tablice trasowania itd. Dzięki temu procesy w różnych przestrzeniach nazw sieciowych mogą korzystać z niezależnych ustawień sieciowych, zapewniając izolację sieciową między procesami.
+
+Implementacja przestrzeni nazw w systemie Linux obejmuje również zestaw narzędzi i funkcji, które umożliwiają manipulację przestrzeniami nazw:
+
+- unshare(2): Funkcja systemowa unshare(2) pozwala procesowi odłączyć się od bieżącej przestrzeni nazw i utworzyć nową przestrzeń naz
+
+w, np. PID, użytkownika, montowania lub sieci.
+
+- unshare(1): Polecenie unshare(1) wiersza poleceń umożliwia użytkownikowi odłączenie się od bieżącej przestrzeni nazw i uruchomienie nowego procesu w nowej przestrzeni nazw.
+
+- setns(2): Funkcja systemowa setns(2) pozwala procesowi dołączyć do istniejącej przestrzeni nazw. Przez podanie odpowiedniego deskryptora pliku proces może dołączyć do istniejącej przestrzeni nazw.
+
+- nsenter(1): Polecenie nsenter(1) wiersza poleceń umożliwia użytkownikowi dołączenie do istniejącej przestrzeni nazw i uruchomienie nowego procesu w tej przestrzeni nazw.
+
+- lsns(8): Polecenie lsns(8) wiersza poleceń pozwala użytkownikowi wyświetlić informacje o istniejących przestrzeniach nazw w systemie.
+
+W podanych podręcznikach systemowych oraz w dokumentacji jądra Linux znajdziesz bardziej szczegółowe informacje dotyczące implementacji i korzystania z poszczególnych przestrzeni nazw oraz narzędzi do manipulacji przestrzeniami nazw.

@@ -1,0 +1,34 @@
+/bin - ontains binaries of essential user commands that can be used by all users of the system. Here we can find ready-to-execute Linux commands like ls, cp, and echo, and shells like bash and csh. Moreover, /bin also contains the ready-to-run executables that may be required in order to boot or repair a system.
+
+/etc - holds most global config files. However, larger software packages can have their own subdirectories under /etc. Some examples are /etc/X11, /etc/sgml, and /etc/xml.
+
+/lib - contains essential shared libraries for system boot. Device drivers necessary for system boot are placed under subdirectory /lib/modules/’kernel-version’. It also contains the libraries needed by binaries from /bin and /sbin to run the commands in the root filesystem.
+
+/mnt - is a mount point where we can mount a temporary filesystem that resides on a storage device like a hard-disk drive, USB stick, or CD-ROM. Unlike /media, where the system mounts removable media automatically, under /mnt we need to mount manually. This directory can be empty or may have subdirectories to mount individual devices.
+
+/proc - contains a hierarchy of special files which represent the current state of the kernel — allowing applications and users to peer into the kernel's view of the system.
+
+/run - stores the system information data describing the system since its booting. Applications store their transient files like process IDs, socket descriptors, and more in this directory.
+
+/srv - has service data. In other words, site-specific data served by our system is likely to be stored here. For instance, if we’re using an HTTP server to serve a website, then we may store files related to our website inside this directory.
+
+/sys is an interface to the kernel. Specifically, it provides a filesystem-like view of information and configuration settings that the kernel provides, much like /proc. Writing to these files may or may not write to the actual device, depending on the setting you're changing. It isn't only for managing devices, though that's a common use case.
+
+/tmp - contains files that are temporary. Many of these files are created by currently running processes on our system that store their temporary data under this directory. Therefore, a clearing out of this directory may happen at booting or at system shutdown.
+
+/var - contains transient files and temporary files whose size may change. We can find a number of spools and log files here.
+
+/home - is the default location to create home directories for different users. For example, let’s say there’s a user with the username “Sam“. Then, the default home directory of Sam will be /home/Sam. In other words, directories under /home provide a personal workspace to regular users who don’t have root privileges.
+
+/media - contains subdirectories that are utilized as mount points when we connect any removable media devices to the system. We can find subdirectories or symbolic links to directories representing different removable media devices like CD-ROMs and USB sticks. For example, on inserting a CD into our Linux system, a directory will automatically be created inside the /media directory. We can use this to access the contents of the CD inside this directory.
+
+/opt - contains optional software packages. In this context, optional software packages are those that are not part of the system — for instance, third-party software that we install as add-ons.
+
+/root - is the home directory of the root user of the system.
+
+/sbin - Similar to the /bin directory, the /sbin (system binaries) directory contains ready-to-run executables needed to boot our Linux system. However, unlike /bin binaries, /sbin contents are intended to be executed by the root user.
+
+/usr - contains executables and read-only data. In contrast with files that are used by the system, files under this directory are used by users. So, /usr/sbin and /usr/bin directories contain non-essential /bin and /sbin binaries, respectively. The default installation location for locally compiled applications is under /usr/local.
+
+
+
